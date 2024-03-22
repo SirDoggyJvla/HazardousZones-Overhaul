@@ -1,3 +1,6 @@
+-- from SirDoggyJvla: import module
+local HZ_Overhaul = require "HZ-Overhaul_util"
+
 local HZ = HazardousZones.Client
 local HZUtils = HazardousZones.Shared.Utils
 local HZConsts = HazardousZones.Constants
@@ -178,7 +181,7 @@ function HZ:calculateProtections(hazardType)
     local timeDelta = 0
     local protection = 0
     local player = getPlayer()
-    
+
     if protections and HZUtils:getTableLength(protections) > 0 and protections[hazardType] then 
         for itemType, pr in pairs(protections[hazardType]) do
             if HZItemSettings[itemType] and HZItemSettings[itemType].protections[hazardType] then
@@ -201,27 +204,36 @@ function HZ:calculateProtections(hazardType)
             end
         end
     end
-    
+
     local activeProtection = 0
-        
-    if HZUtils:isPlayerUseHazmatSuit(player) then
+
+    local gasMask = HZ_Overhaul.isWearingGasMask()
+    local hazmat = HZ_Overhaul.isWearingHazmat()
+
+    if hazmat then
         if hazardType == 'radiation' then
             activeProtection = SandboxVars.HZ.HazmatSuitRadiationProtectionValue
         elseif hazardType == 'biological' then
             activeProtection = SandboxVars.HZ.HazmatSuitBiologicalProtectionValue
         end
-    elseif HZUtils:isPlayerUseGasMask(player) then 
+        HZ_Overhaul.damageMask()
+        HZ_Overhaul.maskUI(player,0,hazmat)
+    elseif gasMask then
         if hazardType == 'radiation' then
             activeProtection = SandboxVars.HZ.GasMaskRadiationProtectionValue
         elseif hazardType == 'biological' then
             activeProtection = SandboxVars.HZ.GasMaskBiologicalProtectionValue
         end
+        HZ_Overhaul.damageMask()
+        HZ_Overhaul.maskUI(player,0,gasMask)
+    else
+        HZ_Overhaul.maskUI(player,2,gasMask)
     end
-    
+
     protection = protection + activeProtection
 
     if protection > SandboxVars.HZ.ItemProtectionCap then protection = SandboxVars.HZ.ItemProtectionCap end
-    
+
     if isDebugEnabled() then
         print(string.format("value=%s activeProtection=%s cap=%s", tostring(protection), tostring(activeProtection), tostring(SandboxVars.HZ.ItemProtectionCap)));
     end

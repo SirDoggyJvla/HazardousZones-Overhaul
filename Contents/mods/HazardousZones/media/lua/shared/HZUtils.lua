@@ -1,3 +1,6 @@
+-- from SirDoggyJvla: import module
+local HZ_Overhaul = require "HZ-Overhaul_util"
+
 local HZ = HazardousZones.Client
 local HZUtils = HazardousZones.Shared.Utils
 local HZConsts = HazardousZones.Constants
@@ -189,7 +192,7 @@ function HZUtils:isGasMask(item)
     if item:getCondition() < 3 then return false end
     if HZUtils:arrayContains(HZConsts.ItemTypes.GasMask, item:getType()) then return true end
     if string.find(SandboxVars.HZ.GasMaskTypes, item:getType()) then return true end
-    if (item:hasTag("GasMask") and not item:hasTag("HazmatSuit")) then return true end
+    if HZ_Overhaul.isWearingGasMask() and not HZ_Overhaul.isWearingHazmat() then return true end
     return false
 end
 
@@ -199,7 +202,7 @@ function HZUtils:isHazmat(item)
     if item.getHolesNumber and item:getHolesNumber() > 0 then return false end
     if HZUtils:arrayContains(HZConsts.ItemTypes.HazmatSuit, item:getType()) then return true end
     if string.find(SandboxVars.HZ.HazmatSuitTypes, item:getType()) then return true end
-    if (item:hasTag("HazmatSuit") and not item:hasTag("GasMask")) then return true end
+    if HZ_Overhaul.isWearingHazmat() and not HZ_Overhaul.isWearingGasMask() then return true end
     return false
 end
 
