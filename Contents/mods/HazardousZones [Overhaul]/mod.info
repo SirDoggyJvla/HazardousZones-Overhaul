@@ -1,10 +1,11 @@
 name=Hazardous Zones - Overhaul
 poster=poster.png
 icon=poster-mini.png
-tags=Radiation, BioHazard, Zones, Hard mode, Realism
+tags=Radiation, BioHazard, Zones, Hard mode, Realism, Susceptible, Patch
 id=HazardousZones_Overhaul
 authors=SirDoggyJvla
 description=This mod adds the gasmask and hazmat list from Susceptible and uses the durability UI and features from it for Hazardous Zones.
 url=https://ko-fi.com/sirdoggyjvla
 modVersion=1.0.0
+versionMin=41.0
 require=HazardousZones,Susceptible
