@@ -1,6 +1,113 @@
 version=1
-id=
+id=3196616278
 title=Hazardous Zones - Overhaul
-description=
-tags=Build 41;Balance;Clothing/Armor;Hardmode;Items;Misc;Realistic
+description=[h1]What does this mod ?[/h1]
+description=The goal of this mod is to make the two mods [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3084326684]Hazardous Zones[/url] by WarHead and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2795677303]Susceptible[/url] from Spyjack work together. 
+description=[quote]Commissioned by undeadmodder[/quote]
+description=
+description=[u][b]Features:[/b][/u]
+description=[olist]
+description=[*]Uses the [b]list of masks and hazmat suits from Susceptible[/b] for more mod compatibilities. (such as respirators from STALKER armor pack or gasmasks from Undead Survivor)
+description=
+description=[*]Only masks with [b]filters[/b] or [b]oxygen tanks[/b] work in hazardous zones ! If you have a protection with charges, the protection will be active !
+description=
+description=[*][b]Durability consumption[/b] of filters and oxygen tanks in hazardous zones.
+description=
+description=[*]Sandbox options to customize the time to drain the durability !
+description=
+description=[*]Ability to [b]remove the Susceptible trait[/b] from character creation with a secondary mod ! 
+description=[/olist]
+description=
+description=[table]
+description=[tr]
+description=[td][img]https://i.imgur.com/Nprpl6Y.png[/img][/td]
+description=[td]
+description=This means you [b]don't have a gasmask or hazmat equiped[/b]. This doesn't mean you don't have any radiations around, make sure to check for any hazard ! 
+description=
+description=You can [b]find a gasmask or hazmat[/b] to protect yourself on [b]various zombies[/b] or you can [b]loot it[/b] in some places. But don't forget the [b]filter or oxygen tank[/b] or it won't work ![/td]
+description=[/tr]
+description=[tr]
+description=[td][img]https://i.imgur.com/e7KyOqf.png[/img][/td]
+description=[td]
+description=You have a [b]gasmask or hazmat equiped[/b], you are [b]protected[/b]. Check your [b]filter or oxygen tank durability[/b] with a neat UI. 
+description=
+description=The durability of the protection is [b]only drained in spore zones[/b] so you can stay cool and styled with your gasmask even outside without draining your protection's durability.
+description=[/td]
+description=[/tr]
+description=[tr]
+description=[td][img]https://i.imgur.com/c5tL9D2.png[/img][/td]
+description=[td]
+description=The UI is in your way ? [b]Move it ![/b]
+description=
+description=You can put it anywhere you want, but probably better if it's not in the middle of your screen.
+description=[/td]
+description=[/tr]
+description=[tr]
+description=[td][img]https://i.imgur.com/MOrKwmV.gif[/img][/td]
+description=[td]
+description=Your filter or oxygen tank is [b]nearly fully drained[/b] ! Quickly change it !
+description=
+description=If it hits zero, you become [b]susceptible to the spores[/b] again and need to exit the building quickly.
+description=[/td]
+description=[/tr]
+description=[/table]
+description=
+description=[u][b]Protections effective in spore zones:[/b][/u]
+description=[img]https://i.imgur.com/AafS404.png[/img]
+description=
+description=
+description=[h1]List of compatible mods[/h1]
+description=[img]https://i.imgur.com/duKKrc4.jpg[/img]
+description=[quote]Courtesy of Susceptible[/quote]
+description=[h3]Added by Susceptible[/h3]
+description=These are mods that are compatible with Susceptible and are now all taken into account for their added gas mask filter and oxygen tank based protection for spore zones.
+description=[list]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829]AuthenticZ[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2801714948]Better Masks[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita's Armour Pack[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2796659476]Dive's Armour Pack[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2398817519]HEADGEAR[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2279084780]Paw Low[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2771076559]Project Fallout: Ranger Armors[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2754737950]Project Fallout: Legionary Armors[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2824161886]Project Fallout: Scientific Armors[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2579437712]REMod[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2658619264]Scrap Armor![/url]
+description=[*]Shark's Law Enforcement Overhaul
+description=[*]Shark's (and Peach's) Military Uniform Improvements
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2831715402]STALKER - Armor Pack[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2091564445]Swat and Riot Pack[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2725378876]They Knew[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2713921292]Undead Survivor[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2760742937]Working Masks[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2845972123]Commonwealth Armor Pack[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2893266530]CRM Armor[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2836225650]Slyy's Spicy Attire[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2874507972]AsuraChi[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891237357]KP Armor[/url]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2866446130]ODST[/url]
+description=[*]Space Marine Armor
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2907683021]Insurgent[/url]
+description=[/list]
+description=Don't hesitate to report any mod that doesn't work, I can update the compatibility list.
+description=
+description=[h3]Added by my mod[/h3]
+description=Those are mods now compatible with Susceptible and thus Hazardous Zones:
+description=[list]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3079948242]KATTAJ1 Military Pack[/url]
+description=[/list]
+description=
+description=[h1]Remarks[/h1]
+description=If you have any suggestions, or mods that need their compatibility added (masks, hazmats etc), feel free to share those and I'll look into it.
+description=
+description=[b][u]Incompatibilities:[/u][/b]
+description=[list]
+description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3128144245]Cordyceps Spore Zones - Overhaul[/url]: I didn't bother to make them compatible as this wasn't a request for the commission. But if enough people want it, I can make them compatible.
+description=[/list]
+description=
+description=[url=https://ko-fi.com/sirdoggyjvla][img]https://raw.githubusercontent.com/ChuckTheSheep/chuckImages/main/kofi.png[/img][/url]
+description=
+description=[url=https://discord.com/invite/SReMnbV4V7][img]https://raw.githubusercontent.com/Chuckleberry-Finn/chuckImages/main/PZmodCommBanner2.png[/img][/url]
+description=
+tags=Build 41;Balance;Clothing/Armor;Hardmode;Interface;Items;Misc;Realistic
 visibility=public

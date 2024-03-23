@@ -13,9 +13,9 @@ local HZData     = HazardousZones.Data
 
 local function calculateDamageByExposures()
     local playerExposures = HZ:getPlayerExposures()
-    
+
     if not playerExposures then return end
-    
+
     for hazardType, exposureValue in pairs(playerExposures) do
         local exposureEffectData = HZUtils:getEffectByExposure(hazardType, exposureValue)
         if (exposureEffectData == nil) then

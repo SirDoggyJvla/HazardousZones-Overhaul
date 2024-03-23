@@ -217,7 +217,6 @@ function HZ:calculateProtections(hazardType)
             activeProtection = SandboxVars.HZ.HazmatSuitBiologicalProtectionValue
         end
         HZ_Overhaul.damageMask()
-        HZ_Overhaul.maskUI(player,0,hazmat)
     elseif gasMask then
         if hazardType == 'radiation' then
             activeProtection = SandboxVars.HZ.GasMaskRadiationProtectionValue
@@ -225,9 +224,6 @@ function HZ:calculateProtections(hazardType)
             activeProtection = SandboxVars.HZ.GasMaskBiologicalProtectionValue
         end
         HZ_Overhaul.damageMask()
-        HZ_Overhaul.maskUI(player,0,gasMask)
-    else
-        HZ_Overhaul.maskUI(player,2,gasMask)
     end
 
     protection = protection + activeProtection
