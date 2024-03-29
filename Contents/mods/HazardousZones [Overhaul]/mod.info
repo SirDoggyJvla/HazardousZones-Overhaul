@@ -14,4 +14,4 @@ description=This mod adds the gasmask and hazmat list from Susceptible and uses 
 url=https://ko-fi.com/sirdoggyjvla
 modVersion=1.0.0
 versionMin=41.0
-require=HazardousZones,Susceptible
+require=HazardousZones,Susceptible,Susceptible_Overhaul

@@ -1,5 +1,11 @@
 -- from SirDoggyJvla: import module
-local HZ_Overhaul = require "HZ-Overhaul_util"
+local Susceptible_Overhaul = require "Susceptible_Overhaul_module"
+
+local function OnGameStart()
+    Susceptible_Overhaul = require "Susceptible_Overhaul_module"
+end
+Events.OnGameStart.Remove(OnGameStart)
+Events.OnGameStart.Add(OnGameStart)
 
 local HZ = HazardousZones.Client
 local HZUtils = HazardousZones.Shared.Utils
@@ -192,7 +198,7 @@ function HZUtils:isGasMask(item)
     if item:getCondition() < 3 then return false end
     if HZUtils:arrayContains(HZConsts.ItemTypes.GasMask, item:getType()) then return true end
     if string.find(SandboxVars.HZ.GasMaskTypes, item:getType()) then return true end
-    if HZ_Overhaul.isWearingGasMask() and not HZ_Overhaul.isWearingHazmat() then return true end
+    if Susceptible_Overhaul.isWearingGasMask() and not Susceptible_Overhaul.isWearingHazmat() then return true end
     return false
 end
 
@@ -202,13 +208,13 @@ function HZUtils:isHazmat(item)
     if item.getHolesNumber and item:getHolesNumber() > 0 then return false end
     if HZUtils:arrayContains(HZConsts.ItemTypes.HazmatSuit, item:getType()) then return true end
     if string.find(SandboxVars.HZ.HazmatSuitTypes, item:getType()) then return true end
-    if HZ_Overhaul.isWearingHazmat() and not HZ_Overhaul.isWearingGasMask() then return true end
+    if Susceptible_Overhaul.isWearingHazmat() and not Susceptible_Overhaul.isWearingGasMask() then return true end
     return false
 end
 
 function HZUtils:isPlayerUseGasMask(player)
     local items = player:getWornItems()
-    
+
     for itemIndex = 1, items:size() - 1 do
         local item = items:getItemByIndex(itemIndex)
         if HZUtils:isGasMask(item) then 
@@ -220,11 +226,11 @@ end
 
 function HZUtils:isPlayerUseHazmatSuit(player)
     local items = player:getWornItems()
-    
+
     for itemIndex = 0, items:size() - 1 do
         local item = items:getItemByIndex(itemIndex)
         -- local isHazmat = item and ((HZUtils:arrayContains(HZConsts.ItemTypes.HazmatSuit, item:getType())) or (item:hasTag("HazmatSuit"))) and item:getHolesNumber() == 0
-        
+
         if HZUtils:isHazmat(item) then 
             return true
         end

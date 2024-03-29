@@ -1,5 +1,5 @@
 -- from SirDoggyJvla: import module
-local HZ_Overhaul = require "HZ-Overhaul_util"
+local Susceptible_Overhaul = require "Susceptible_Overhaul_module"
 
 if isServer() then
     return
@@ -64,14 +64,7 @@ local function onEveryOneMinute()
     HZ:resetGains()
     HZ:resetExpData()
 
-    local gasMask = HZ_Overhaul.isWearingGasMask()
-    local hazmat = HZ_Overhaul.isWearingHazmat()
-
-    if gasMask or hazmat then
-        gasMask = true
-    end
-
-    HZ_Overhaul.maskUI(player,0,gasMask)
+    local protected = Susceptible_Overhaul.isWearingGasMask() or Susceptible_Overhaul.isWearingHazmat()
 
     if player:isGodMod() or player:isDead() then
         if isDebugEnabled() then

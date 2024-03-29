@@ -1,5 +1,5 @@
 -- from SirDoggyJvla: import module
-local HZ_Overhaul = require "HZ-Overhaul_util"
+local Susceptible_Overhaul = require "Susceptible_Overhaul_module"
 
 local HZ = HazardousZones.Client
 local HZUtils = HazardousZones.Shared.Utils
@@ -207,8 +207,8 @@ function HZ:calculateProtections(hazardType)
 
     local activeProtection = 0
 
-    local gasMask = HZ_Overhaul.isWearingGasMask()
-    local hazmat = HZ_Overhaul.isWearingHazmat()
+    local gasMask = Susceptible_Overhaul.isWearingGasMask()
+    local hazmat = Susceptible_Overhaul.isWearingHazmat()
 
     if hazmat then
         if hazardType == 'radiation' then
@@ -216,14 +216,21 @@ function HZ:calculateProtections(hazardType)
         elseif hazardType == 'biological' then
             activeProtection = SandboxVars.HZ.HazmatSuitBiologicalProtectionValue
         end
-        HZ_Overhaul.damageMask()
+        Susceptible_Overhaul.damageMask()
+
     elseif gasMask then
         if hazardType == 'radiation' then
             activeProtection = SandboxVars.HZ.GasMaskRadiationProtectionValue
         elseif hazardType == 'biological' then
             activeProtection = SandboxVars.HZ.GasMaskBiologicalProtectionValue
         end
-        HZ_Overhaul.damageMask()
+        Susceptible_Overhaul.damageMask(
+            SandboxVars.HazardousZones.DrainageOxyTank,
+            SandboxVars.HazardousZones.DrainageFilter,
+            SandboxVars.HazardousZones.TimetoDrainOxyTank,
+            SandboxVars.HazardousZones.TimetoDrainFilter
+        )
+
     end
 
     protection = protection + activeProtection

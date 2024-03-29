@@ -1,7 +1,7 @@
 version=1
 id=3196616278
 title=WarHead's Hazardous Zones - Overhaul
-description=[h1]What does this mod ?[/h1]
+description=[h1]What does this mod do ?[/h1]
 description=The goal of this mod is to make the two mods [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3084326684]Hazardous Zones[/url] by WarHead and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2795677303]Susceptible[/url] from Spyjack work together. 
 description=[quote]Commissioned by undeadmodder[/quote]
 description=
@@ -52,7 +52,7 @@ description=[/td]
 description=[/tr]
 description=[/table]
 description=
-description=[u][b]Protections effective in spore zones:[/b][/u]
+description=[u][b]Protections effective in hazardous zones:[/b][/u]
 description=[img]https://i.imgur.com/AafS404.png[/img]
 description=
 description=
@@ -60,7 +60,7 @@ description=[h1]List of compatible mods[/h1]
 description=[img]https://i.imgur.com/duKKrc4.jpg[/img]
 description=[quote]Courtesy of Susceptible[/quote]
 description=[h3]Added by Susceptible[/h3]
-description=These are mods that are compatible with Susceptible and are now all taken into account for their added gas mask filter and oxygen tank based protection for spore zones.
+description=These are mods that are compatible with Susceptible and are now all taken into account for their added gas mask filter and oxygen tank based protection for hazardous zones.
 description=[list]
 description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829]AuthenticZ[/url]
 description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2801714948]Better Masks[/url]
@@ -95,19 +95,14 @@ description=[h3]Added by my mod[/h3]
 description=Those are mods now compatible with Susceptible and thus Hazardous Zones:
 description=[list]
 description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3079948242]KATTAJ1 Military Pack[/url]
+description=[*]Updated [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita's Armour Pack[/url] (Antibelok)
 description=[/list]
 description=
 description=[h1]Remarks[/h1]
 description=If you have any suggestions, or mods that need their compatibility added (masks, hazmats etc), feel free to share those and I'll look into it.
-description=
-description=[b][u]Incompatibilities:[/u][/b]
-description=[list]
-description=[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3128144245]Cordyceps Spore Zones - Overhaul[/url]: I didn't bother to make them compatible as this wasn't a request for the commission. But if enough people want it, I can make them compatible.
-description=[/list]
-description=
+description=
 description=[url=https://ko-fi.com/sirdoggyjvla][img]https://raw.githubusercontent.com/ChuckTheSheep/chuckImages/main/kofi.png[/img][/url]
 description=
 description=[url=https://discord.com/invite/SReMnbV4V7][img]https://raw.githubusercontent.com/Chuckleberry-Finn/chuckImages/main/PZmodCommBanner2.png[/img][/url]
-description=
 tags=Build 41;Balance;Clothing/Armor;Hardmode;Interface;Items;Misc;Realistic
 visibility=public
