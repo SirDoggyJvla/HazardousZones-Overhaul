@@ -4,7 +4,7 @@ option HazardousZones.DrainageFilter
 {
     type = boolean,
     default = true,
-    page = HazardousZones,
+    page = SusceptibleOverhaul,
     translation = HazardousZones_DrainageFilter,
 }
 
@@ -13,8 +13,8 @@ option HazardousZones.TimetoDrainFilter
     type = double,
     min = 0.25,
     default = 3,
-    max = 72,
-    page = HazardousZones,
+    max = 168,
+    page = SusceptibleOverhaul,
     translation = HazardousZones_TimetoDrainFilter,
 }
 
@@ -22,7 +22,7 @@ option HazardousZones.DrainageOxyTank
 {
     type = boolean,
     default = true,
-    page = HazardousZones,
+    page = SusceptibleOverhaul,
     translation = HazardousZones_DrainageOxyTank,
 }
 
@@ -31,7 +31,7 @@ option HazardousZones.TimetoDrainOxyTank
     type = double,
     min = 0.25,
     default = 6,
-    max = 72,
-    page = HazardousZones,
+    max = 168,
+    page = SusceptibleOverhaul,
     translation = HazardousZones_TimetoDrainOxyTank,
 }

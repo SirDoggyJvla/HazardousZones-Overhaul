@@ -210,13 +210,26 @@ function HZ:calculateProtections(hazardType)
     local gasMask = Susceptible_Overhaul.isWearingGasMask()
     local hazmat = Susceptible_Overhaul.isWearingHazmat()
 
+    local playerModData = player:getModData()
+    if not playerModData["Susceptible_Overhaul"] then
+        playerModData["Susceptible_Overhaul"] = {}
+    end
+    if not playerModData["Susceptible_Overhaul"].DamageProtection then
+        playerModData["Susceptible_Overhaul"].DamageProtection = {}
+    end
+
     if hazmat then
         if hazardType == 'radiation' then
             activeProtection = SandboxVars.HZ.HazmatSuitRadiationProtectionValue
         elseif hazardType == 'biological' then
             activeProtection = SandboxVars.HZ.HazmatSuitBiologicalProtectionValue
         end
-        Susceptible_Overhaul.damageMask()
+        playerModData["Susceptible_Overhaul"].DamageProtection.HZ = {
+            drain_oxygen = SandboxVars.HazardousZones.DrainageOxyTank,
+            drain_filter = SandboxVars.HazardousZones.DrainageFilter,
+            oxygenTank_drainage = SandboxVars.HazardousZones.TimetoDrainOxyTank,
+            filter_drainage = SandboxVars.HazardousZones.TimetoDrainFilter,
+        }
 
     elseif gasMask then
         if hazardType == 'radiation' then
@@ -224,12 +237,18 @@ function HZ:calculateProtections(hazardType)
         elseif hazardType == 'biological' then
             activeProtection = SandboxVars.HZ.GasMaskBiologicalProtectionValue
         end
-        Susceptible_Overhaul.damageMask(
-            SandboxVars.HazardousZones.DrainageOxyTank,
-            SandboxVars.HazardousZones.DrainageFilter,
-            SandboxVars.HazardousZones.TimetoDrainOxyTank,
-            SandboxVars.HazardousZones.TimetoDrainFilter
-        )
+
+        playerModData["Susceptible_Overhaul"].DamageProtection.HZ = {
+            drain_oxygen = SandboxVars.HazardousZones.DrainageOxyTank,
+            drain_filter = SandboxVars.HazardousZones.DrainageFilter,
+            oxygenTank_drainage = SandboxVars.HazardousZones.TimetoDrainOxyTank,
+            filter_drainage = SandboxVars.HazardousZones.TimetoDrainFilter,
+        }
+
+        playerModData["Susceptible_Overhaul"].test = true
+
+    else
+        playerModData["Susceptible_Overhaul"].DamageProtection.HZ = nil
 
     end
 
@@ -371,7 +390,7 @@ function HZ:getKnowledgeData(knowledge)
     local modData = getPlayerModData()
 
     if not modData.knowledges or not modData.knowledges[knowledge] then return nil end
-    
+
     return modData.knowledges[knowledge]
 end
 
