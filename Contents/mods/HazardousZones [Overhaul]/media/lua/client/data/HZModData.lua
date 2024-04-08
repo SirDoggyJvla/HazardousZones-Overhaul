@@ -6,7 +6,7 @@ local HZUtils = HazardousZones.Shared.Utils
 local HZConsts = HazardousZones.Constants
 local HZItemSettings = HazardousZones.Settings.Items
 
-local function getPlayerModData() 
+local function getPlayerModData()
     local player = getPlayer()
     local playerModData = player:getModData()
     

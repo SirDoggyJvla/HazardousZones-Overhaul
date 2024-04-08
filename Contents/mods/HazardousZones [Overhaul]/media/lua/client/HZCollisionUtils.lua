@@ -12,9 +12,6 @@ local function onCollision(player, data)
     end
 end
 
--- from SirDoggyJvla
-local inZone = false
-
 -- from SirDoggyJvla: hooked up to the function
 local function _detectCollision(zones)
     local player = getPlayer(); if not player then return end
@@ -24,6 +21,7 @@ local function _detectCollision(zones)
     local distanceFromEpicentre
     local isPlayerCollide = false
 
+    local inZone = false
     if HZUtils:getTableLength(zones) then
         for _,zone in pairs(zones) do
             local zRadius = zone.radius
@@ -55,15 +53,17 @@ local function _detectCollision(zones)
         end
     end
 
+    if inZone then
+        return true
+    end
+    return false
 end
 
 function HZ:detectCollision()
-    inZone = false
-
-    _detectCollision(HZData.Zones)
+    local inZone = _detectCollision(HZData.Zones)
 
     if SandboxVars.HZ.RandomZones then
-    _detectCollision(HZData.RndZones)
+        inZone = _detectCollision(HZData.RndZones) or inZone
     else
         print("[HZ_DETECT_COLLISION] Collision detection is disabled for random zones because it's disabled in the Sandbox Settings")
         return
