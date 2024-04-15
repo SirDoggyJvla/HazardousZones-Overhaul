@@ -1,6 +1,8 @@
 -- from SirDoggyJvla: import module
 local Susceptible_Overhaul = require "Susceptible_Overhaul_module"
 
+local printDebug = false
+
 if isServer() then
     return
 end
@@ -19,12 +21,12 @@ local function calculateDamageByExposures()
     for hazardType, exposureValue in pairs(playerExposures) do
         local exposureEffectData = HZUtils:getEffectByExposure(hazardType, exposureValue)
         if (exposureEffectData == nil) then
-            if isDebugEnabled() then
+            if isDebugEnabled() and printDebug then
                 print("No effect found with given hazard type. [hazardType="..hazardType.."]")
             end
         end
         if (exposureEffectData ~= nil and exposureEffectData.effect ~= nil and exposureEffectData.severity ~= "none") then
-            if (isDebugEnabled()) then
+            if (isDebugEnabled() and printDebug) then
                 print("Calculating damages by exposures. [type="..hazardType..", severity="..exposureEffectData.severity..", exposure="..exposureValue.."]");
             end
             HZ:executeEffect(exposureEffectData.effect)
@@ -53,7 +55,7 @@ local function onGameStart()
 end
 
 local function onCreatePlayer()
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print ('create player callback')
     end
 end
@@ -67,7 +69,7 @@ local function onEveryOneMinute()
     local protected = Susceptible_Overhaul.isWearingGasMask() or Susceptible_Overhaul.isWearingHazmat()
 
     if player:isGodMod() or player:isDead() then
-        if isDebugEnabled() then
+        if isDebugEnabled() and printDebug then
             print("Ignoring collision check and damage calculation because player is admin or dead")
         end
     else
@@ -85,7 +87,7 @@ local function onEveryTenMinutes()
 
     HZ:checkProtections(player)
 
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print('10 minutes has gone')
     end
 end

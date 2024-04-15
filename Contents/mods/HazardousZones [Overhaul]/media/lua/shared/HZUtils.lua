@@ -1,5 +1,7 @@
 -- from SirDoggyJvla: import module
-local Susceptible_Overhaul = require "Susceptible_Overhaul_module"
+local Susceptible_Overhaul = nil
+
+local printDebug = false
 
 local function OnGameStart()
     Susceptible_Overhaul = require "Susceptible_Overhaul_module"
@@ -99,7 +101,7 @@ function HZUtils:getRandomEpicentre()
         sq = HZUtils:getRandomSquare()
     end
 
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print("[RANDOM ZONES] Got valid square in "..tostring(iteration).." cycles [x="..sq.x..", y="..sq.y..", z="..sq.z.."]")
     end
 
@@ -323,7 +325,7 @@ function HZUtils:doGeigerFalseAlarmCheck(player, geigerDetector)
         
         if falsePositiveSettings then 
             if falsePositiveRoll < falsePositiveSettings.FalsePositiveRatio then
-                if isDebugEnabled() then
+                if isDebugEnabled() and printDebug then
                     print(string.format("[Geiger FALSE POSITIVE] %s has triggered a false positive alarm [gain=%d, roll=%d, ratio=%d]", geigerDetector:getType(),falsePositiveGain, falsePositiveRoll, falsePositiveSettings.FalsePositiveRatio))
                 end
                 HZUtils:doDetector(player, geigerDetector, "radiation", falsePositiveGain)
@@ -347,7 +349,7 @@ function HZUtils:doGasDetectorFalseAlarmCheck(player, gasDetector)
         
         if falsePositiveSettings then 
             if falsePositiveRoll < falsePositiveSettings.FalsePositiveRatio then
-                if isDebugEnabled() then
+                if isDebugEnabled() and printDebug then
                     print(string.format("[GasDetector FALSE POSITIVE] %s has triggered a false positive alarm [gain=%d, roll=%d, ratio=%d]", gasDetector:getType(),falsePositiveGain, falsePositiveRoll, falsePositiveSettings.FalsePositiveRatio))
                 end
                 HZUtils:doDetector(player, gasDetector, "biological", falsePositiveGain)

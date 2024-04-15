@@ -1,9 +1,11 @@
+local printDebug = false
+
 local HZ = HazardousZones.Client
 local HZUtils = HazardousZones.Shared.Utils
 local HZData = HazardousZones.Data
 
 local function onCollision(player, data)
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print(string.format(player:getUsername().." is colliding with a %s zone", data.zone.hazard.type))
     end
 

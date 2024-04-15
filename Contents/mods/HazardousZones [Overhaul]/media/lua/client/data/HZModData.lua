@@ -1,3 +1,5 @@
+local printDebug = false
+
 -- from SirDoggyJvla: import module
 local Susceptible_Overhaul = require "Susceptible_Overhaul_module"
 
@@ -33,7 +35,7 @@ function HZ:modifyPlayerExposure(hazardType, exposure, reason)
         exposures[hazardType] = exposures[hazardType] + increment
     end
 
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         local debugText = string.format("[PLAYER EXPOSURE:MODIFY] The player is exposed to %s hazard and got %s RAD. Protections: %s, Reason: %s", hazardType, tostring(exposure), tostring(protections), reason)
         print(debugText)
     end
@@ -44,7 +46,9 @@ function HZ:getIncrementWithoutProtections(zoneData, gradualModifier)
 
     if zoneData.gradualExposure then increment = increment - (increment * gradualModifier) end
 
-    print("radinczd "..tostring(zoneData.gradualExposure))
+    if isDebugEnabled() and printDebug then
+        print("radinczd "..tostring(zoneData.gradualExposure))
+    end
 
     if increment < 0 then increment = 0 end
 
@@ -56,17 +60,14 @@ function HZ:increasePlayerExposure(zoneData, gradualModifier)
     local hazardType = zoneData.hazard.type
 
     local protections = HZ:calculateProtections(hazardType);
-    
+
     local increment = zoneData.hazard.exposurePerInGameMinute - (protections * zoneData.hazard.exposurePerInGameMinute);
-    
+
     if zoneData.gradualExposure then increment = increment - (increment * gradualModifier) end
-    
-    if zoneData.gradualExposure then
-        print ("increment="..increment..", epm="..zoneData.hazard.exposurePerInGameMinute..", gM="..gradualModifier)
-    end
-    
+
+
     if increment < 0 then increment = 0 end
-    
+
     if not exposures[hazardType] then
         exposures[hazardType] = increment  
     else
@@ -75,11 +76,11 @@ function HZ:increasePlayerExposure(zoneData, gradualModifier)
 
     local radInc = HZ:getIncrementWithoutProtections(zoneData, gradualModifier)
 
-    print("radinc "..tostring(radInc))
-
     HZ:setExpData(hazardType, radInc)
-    
-    if (isDebugEnabled()) then
+
+    if isDebugEnabled() and printDebug then
+        print ("increment="..increment..", epm="..zoneData.hazard.exposurePerInGameMinute..", gM="..gradualModifier)
+        print("radinc "..tostring(radInc))
         local debugText = "The player is exposed to "..hazardType.." [increment="..increment.." protections="..protections.." exposure="..exposures[hazardType].."]"
         if zoneData.gradualExposure then debugText = debugText .. "[gradual=" .. gradualModifier .. "]" end
         print(debugText);
@@ -97,7 +98,7 @@ function HZ:decreasePlayerExposure(hazardType, decrement, reason)
             exposures[hazardType] = 0 
         end
 
-        if isDebugEnabled() then
+        if isDebugEnabled() and printDebug then
             print("[EXPOSURE DECREASE] Decreasing "..hazardType.." exposure for the player [decrement="..decrement..", newvalue="..exposures[hazardType]..", reason="..reason.."]")
         end
     end
@@ -112,7 +113,7 @@ end
 function HZ:getPlayerExposures() 
     local modData = getPlayerModData()
     if modData.exposures then 
-        if isDebugEnabled() then
+        if isDebugEnabled() and printDebug then
             HZUtils:printTable(modData.exposures)
         end
         return modData.exposures
@@ -131,7 +132,7 @@ end
 function HZ:getPlayerProtections()
     local modData = getPlayerModData()
     if modData.protections then 
-        if isDebugEnabled() then
+        if isDebugEnabled() and printDebug then
             HZUtils:printTable(modData.protections)
         end
         return modData.protections
@@ -143,7 +144,7 @@ end
 function HZ:removePlayerProtections(hazardType, protectionType)
     local modData = getPlayerModData()
     if hazardType == "all" then 
-        if isDebugEnabled() then print("Protections has been removed from player") end
+        if isDebugEnabled() and printDebug then print("Protections has been removed from player") end
         modData.protections = {}
         HZ:setIndralineMoodle(0.5)
         HZ:setIodineMoodle(0.5)
@@ -194,11 +195,11 @@ function HZ:calculateProtections(hazardType)
                     protection = protection + itemProtectionValue
                 end
 
-                if isDebugEnabled() then
+                if isDebugEnabled() and printDebug then
                     print("[CALCULATE PROTECTIONS] item="..itemType..", sum="..tostring(protection))
                 end
             else
-                if isDebugEnabled() then
+                if isDebugEnabled() and printDebug then
                     print("[CALCULATE PROTECTIONS] No protection data found for item="..itemType)
                 end
             end
@@ -256,7 +257,7 @@ function HZ:calculateProtections(hazardType)
 
     if protection > SandboxVars.HZ.ItemProtectionCap then protection = SandboxVars.HZ.ItemProtectionCap end
 
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print(string.format("value=%s activeProtection=%s cap=%s", tostring(protection), tostring(activeProtection), tostring(SandboxVars.HZ.ItemProtectionCap)));
     end
 
@@ -285,7 +286,7 @@ function HZ:checkProtections(player)
 
             local isItemWearedOff = timeDelta <= 0
             
-            if isDebugEnabled() then
+            if isDebugEnabled() and printDebug then
                 print("[CHECK PROTECTIONS] timeDelta for "..itemType.."="..timeDelta)
             end
 
@@ -293,7 +294,7 @@ function HZ:checkProtections(player)
                 local reduction = itemSettings.reductions[hazardType]
                 
                 if not reduction then 
-                    if isDebugEnabled() then
+                    if isDebugEnabled() and printDebug then
                         print("[CHECK PROTECTIONS] Cannot find exposure reduction data for itemType="..itemType..", hazardType="..hazardType)
                     end
                     return 
@@ -317,7 +318,7 @@ end
 
 function HZ:getGains() 
     local modData = getPlayerModData();
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print(string.format("[GAINS] rad=%s, bio=%s", modData.gains.radiation, modData.gains.biological))
     end
     return modData.gains
@@ -331,7 +332,7 @@ function HZ:resetGains()
         biological = 0
     } 
 
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print("[GAINS] Reset...")
     end
 end
@@ -369,7 +370,7 @@ function HZ:resetExpData()
         biological = 0
     } 
 
-    if isDebugEnabled() then
+    if isDebugEnabled() and printDebug then
         print("[EXPDATA] Reset...")
     end
 end
