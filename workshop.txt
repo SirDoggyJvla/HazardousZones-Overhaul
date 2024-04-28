@@ -48,9 +48,10 @@ description=[td]Fully compatible with [url=https://steamcommunity.com/sharedfile
 description=[/tr]
 description=[/table]
 description=
-description=[h1]Compatible with a bunch of mods ![/h1]
+description=[h1]List of compatible mods[/h1]
 description=[img]https://i.imgur.com/duKKrc4.jpg[/img]
-description=[quote]From Susceptible[/quote]
+description=[img]https://raw.githubusercontent.com/SirDoggyJvla/Susceptible-Overhaul/main/images/mod_compatibilities.png[/img]
+description=[quote][url=https://steamcommunity.com/workshop/filedetails/discussion/3204615438/8059829560012821057/]Full list of compatible mods[/url][/quote]
 description=
 description=[h1]Remarks[/h1]
 description=If you have any suggestions, or mods that need their compatibility added (masks, hazmats etc), feel free to share those and I'll look into it.

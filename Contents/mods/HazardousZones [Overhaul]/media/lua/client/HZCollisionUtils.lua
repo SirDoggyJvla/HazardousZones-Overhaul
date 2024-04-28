@@ -79,6 +79,26 @@ function HZ:detectCollision()
         if not playerModData["Susceptible_Overhaul"].DamageProtection then
             playerModData["Susceptible_Overhaul"].DamageProtection = {}
         end
-        playerModData["Susceptible_Overhaul"].DamageProtection.HZ = nil
+        if playerModData["Susceptible_Overhaul"].DamageProtection.HZ then
+            playerModData["Susceptible_Overhaul"].DamageProtection.HZ = nil
+        end
+
+        if SandboxVars.HazardousZones.HazardLevelNaturalLoss then
+            local exposures = HZ:getPlayerExposures()
+            if exposures then
+                local newValue
+                for hazardType, exposureValue in pairs(exposures) do
+                    print(hazardType)
+                    print(exposureValue)
+                    if exposureValue > 0 then
+                        newValue = exposureValue - SandboxVars.HazardousZones.ExposureLossCoefficient / (60*24)
+                        if newValue < 0 then
+                            newValue = 0
+                        end
+                        HZ:setPlayerExposure(hazardType, newValue)
+                    end
+                end
+            end
+        end
     end
 end

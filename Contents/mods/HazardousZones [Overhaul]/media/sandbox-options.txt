@@ -35,3 +35,21 @@ option HazardousZones.TimetoDrainOxyTank
     page = SusceptibleOverhaul,
     translation = HazardousZones_TimetoDrainOxyTank,
 }
+
+option HazardousZones.HazardLevelNaturalLoss
+{
+    type = boolean,
+    default = true,
+    page = SusceptibleOverhaul,
+    translation = HazardousZones_HazardLevelNaturalLoss,
+}
+
+option HazardousZones.ExposureLossCoefficient
+{
+    type = double,
+    min = 0.25,
+    default = 7,
+    max = 15,
+    page = SusceptibleOverhaul,
+    translation = HazardousZones_ExposureLossCoefficient,
+}
