@@ -88,8 +88,6 @@ function HZ:detectCollision()
             if exposures then
                 local newValue
                 for hazardType, exposureValue in pairs(exposures) do
-                    print(hazardType)
-                    print(exposureValue)
                     if exposureValue > 0 then
                         newValue = exposureValue - SandboxVars.HazardousZones.ExposureLossCoefficient / (60*24)
                         if newValue < 0 then

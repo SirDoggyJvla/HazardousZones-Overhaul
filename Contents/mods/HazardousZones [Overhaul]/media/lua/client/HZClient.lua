@@ -66,8 +66,6 @@ local function onEveryOneMinute()
     HZ:resetGains()
     HZ:resetExpData()
 
-    local protected = Susceptible_Overhaul.isWearingGasMask() or Susceptible_Overhaul.isWearingHazmat()
-
     if player:isGodMod() or player:isDead() then
         if isDebugEnabled() and printDebug then
             print("Ignoring collision check and damage calculation because player is admin or dead")
